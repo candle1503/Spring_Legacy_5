@@ -21,4 +21,8 @@
 		select * from notice where num = ${num}
 	</select>
 	
+	<update id="hitUpdate" parameterType="java.lang.Long">
+		update notice SET hit = hit+1 where num = #{num}
+	</update>
+	
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.coupang.s5.board.BoardVO;
 import com.coupang.s5.notice.NoticeDAO;
 import com.coupang.s5.notice.NoticeVO;
+import com.sun.javafx.scene.text.HitInfo;
 
 public class NoticeDAOTest extends AbstractTestCase {
 
@@ -52,10 +53,13 @@ public class NoticeDAOTest extends AbstractTestCase {
 	
 	@Test
 	public void boardSelectTest() throws Exception{
-		NoticeVO noticeVO = new NoticeVO(); 
-		BoardVO boardVO = noticeDAO.boardSelect(5);
-		
+		BoardVO boardVO = new BoardVO();
+		hitUpdate();
 		assertNotEquals(0, boardVO.getNum());
 	}
 	
+	@Test
+	public void hitUpdate() throws Exception{
+		hitUpdate();
+	}
 }
