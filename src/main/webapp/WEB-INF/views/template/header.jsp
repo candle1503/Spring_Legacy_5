@@ -17,8 +17,8 @@
         </ul>
       </li>
 <%--       <li><a href="<%= request.getContextPath() %>/point/pointList">Point</a></li> --%>	<!--요즘은 안쓴다  -->
-      <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>	<!-- 공통적으로 쓰이는 페이지는 절대경로로 씀 -->
       <li><a href="${pageContext.request.contextPath}/notice/noticeList">게시판</a></li>
+      <li><a href="${pageContext.request.contextPath}/point/qnaList">Q&A</a></li>	<!-- 공통적으로 쓰이는 페이지는 절대경로로 씀 -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <c:if test="${empty member}">
