@@ -19,7 +19,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="qnaList")
-	public ModelAndView qnaList() throws Exception{
+	public ModelAndView qnaList(ModelAndView mv) throws Exception{
 		
 		
 		
