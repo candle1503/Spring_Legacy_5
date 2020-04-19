@@ -1,6 +1,8 @@
 package com.coupang.s5.qna;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,32 +18,34 @@ public class QnaService implements BoardService{
 
 	@Override
 	public List<BoardVO> boardList(int curpage) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		int startRow = (curpage-1)*10 +1;
+		int lastRow = (curpage)*10;
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		
+		return qnaDAO.boardList(map);
 	}
 
 	@Override
 	public BoardVO boardSelect(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		qnaDAO.hitUpdate(num);
+		return qnaDAO.boardSelect(num);
 	}
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardWrite(boardVO);
 	}
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardUpdate(boardVO);
 	}
 
 	@Override
 	public int boardDelete(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardDelete(num);
 	}
 	
 	

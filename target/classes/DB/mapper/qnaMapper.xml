@@ -6,17 +6,35 @@
   
 <mapper namespace="com.coupang.s5.qna.QnaDAO">
 
-	<select id=""></select>
+	<select id="boardList" parameterType="java.util.Map" resultType="com.coupang.s5.qna.QnaVO">
+		select * from 
+		(select N.*, rownum R from
+		(select * from qna where num >=1 order by num desc) N)
+		where R BETWEEN #{startRow} and #{lastRow}
+	</select>
 
+	<insert id="boardWrite" parameterType="com.coupang.s5.qna.QnaVO">
+		insert into qna values(board_seq.nextval,#{title},#{writer},#{contents},sysdate,0,0,0,0)
+	</insert>
 
+	<update id="boardUpdate" parameterType="com.coupang.s5.qna.QnaVO">
+		update qna SET title=#{title}, contents=#{contents} where num = #{num}
+	</update>
 
+	<delete id="boardDelete" parameterType="java.lang.Long">
+		delete qna where num = #{num}
+	</delete>
 
+	<select id="boardSelect" resultType="com.coupang.s5.qna.QnaVO" parameterType="java.lang.Long">
+		select * from qna where num = #{num}
+	</select>
 
+	<select id="boardCount" resultType="java.lang.Long">
+		select count(num) from qna
+	</select>
 
-
-
-
-
-
+	<update id="hitUpdate" parameterType="java.lang.Long">
+		update qna SET hit = hit+1 where num = #{num}
+	</update>
 
 </mapper>
