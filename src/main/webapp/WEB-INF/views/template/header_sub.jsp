@@ -17,7 +17,8 @@
         </ul>
       </li>
 <%--       <li><a href="<%= request.getContextPath() %>/point/pointList">Point</a></li> --%>	<!--요즘은 안쓴다  -->
-      <li><a href="${pageContext.request.contextPath}/notice/noticeList">게시판</a></li>
+      <li><a href="${pageContext.request.contextPath}/notice/noticeList">NOTICE</a></li>
+      <li><a href="${pageContext.request.contextPath}/member/memberList">MEMBER LIST</a></li>
        <li><a href="${pageContext.request.contextPath}/qna/qnaList">Q&A</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

@@ -2,11 +2,13 @@ package com.coupang.s5.board;
 
 import java.util.List;
 
+import com.coupang.s5.board.page.Pager;
+
 public interface BoardService {
 
 	
 	//List
-	public List<BoardVO> boardList(int curpage) throws Exception;
+	public List<BoardVO> boardList(Pager pager) throws Exception;
 	
 	//Select
 	public BoardVO boardSelect(long num) throws Exception;

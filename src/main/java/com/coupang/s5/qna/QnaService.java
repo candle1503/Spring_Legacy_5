@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.coupang.s5.board.BoardService;
 import com.coupang.s5.board.BoardVO;
+import com.coupang.s5.board.page.Pager;
 
 @Service
 public class QnaService implements BoardService{
@@ -17,14 +18,9 @@ public class QnaService implements BoardService{
 	private QnaDAO qnaDAO;
 
 	@Override
-	public List<BoardVO> boardList(int curpage) throws Exception {
-		int startRow = (curpage-1)*10 +1;
-		int lastRow = (curpage)*10;
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startRow", startRow);
-		map.put("lastRow", lastRow);
-		
-		return qnaDAO.boardList(map);
+	public List<BoardVO> boardList(Pager pager) throws Exception {
+				
+		return qnaDAO.boardList(pager);
 	}
 
 	@Override

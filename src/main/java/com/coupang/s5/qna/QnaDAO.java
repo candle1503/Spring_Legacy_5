@@ -1,7 +1,6 @@
 package com.coupang.s5.qna;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.coupang.s5.board.BoardDAO;
 import com.coupang.s5.board.BoardVO;
+import com.coupang.s5.board.page.Pager;
 
 @Repository
 public class QnaDAO implements BoardDAO{
@@ -18,8 +18,8 @@ public class QnaDAO implements BoardDAO{
 	private final String NAMESPACE = "com.coupang.s5.qna.QnaDAO.";
 	
 	@Override
-	public List<BoardVO> boardList(Map<String, Integer> map) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"boardList", map);
+	public List<BoardVO> boardList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"boardList", pager);
 	}
 	
 	@Override
@@ -37,10 +37,10 @@ public class QnaDAO implements BoardDAO{
 		return sqlSession.insert(NAMESPACE+"boardWrite", boardVO);
 	}
 	
-	@Override
-	public long boardCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"boardCount");
-	}
+	/*
+	 * @Override public long boardCount() throws Exception { return
+	 * sqlSession.selectOne(NAMESPACE+"boardCount"); }
+	 */
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
 		return sqlSession.update(NAMESPACE+"boardUpdate", boardVO);
@@ -48,5 +48,11 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public int hitUpdate(long num) throws Exception {
 		return sqlSession.update(NAMESPACE+"hitUpdate", num);
+	}
+
+	@Override
+	public long boardCount(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

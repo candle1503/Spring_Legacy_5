@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.coupang.s5.board.BoardDAO;
 import com.coupang.s5.board.BoardVO;
+import com.coupang.s5.board.page.Pager;
 
 	@Repository
 	public class NoticeDAO implements BoardDAO {
@@ -19,13 +20,13 @@ import com.coupang.s5.board.BoardVO;
 		private final String NAMESPACE = "com.coupang.s5.notice.NoticeDAO.";
 		
 		@Override
-		public long boardCount() throws Exception {
-			return sqlSession.selectOne(NAMESPACE+"boardCount");
+		public long boardCount(Pager pager) throws Exception {
+			return sqlSession.selectOne(NAMESPACE+"boardCount",pager);
 		}
 		
 		@Override
-		public List<BoardVO> boardList(Map<String, Integer> map) throws Exception {
-			return sqlSession.selectList(NAMESPACE+"boardList", map);
+		public List<BoardVO> boardList(Pager pager) throws Exception {
+			return sqlSession.selectList(NAMESPACE+"boardList", pager);
 		}
 
 		@Override

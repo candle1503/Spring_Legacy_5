@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.coupang.s5.board.BoardVO;
+import com.coupang.s5.board.page.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -89,10 +89,14 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeList")
-	public ModelAndView boardList(ModelAndView mv, @RequestParam(defaultValue = "1") int curpage) throws Exception{
+	public ModelAndView boardList(ModelAndView mv, Pager pager) throws Exception{
+		System.out.println("kind : " + pager.getKind());
+		System.out.println("search : " + pager.getSearch());
 		
-		List<BoardVO> ar = noticeService.boardList(curpage);
+		
+		List<BoardVO> ar = noticeService.boardList(pager);
 		mv.addObject("list",ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/boardList");
 		
 		return mv;

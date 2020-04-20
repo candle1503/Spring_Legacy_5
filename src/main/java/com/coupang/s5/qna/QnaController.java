@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.coupang.s5.board.BoardVO;
+import com.coupang.s5.board.page.Pager;
 
 @Controller
 @RequestMapping(value="/qna/**")
@@ -26,9 +26,9 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="qnaList")
-	public ModelAndView qnaList(ModelAndView mv, @RequestParam(defaultValue = "1") int curpage) throws Exception{
+	public ModelAndView qnaList(ModelAndView mv,Pager pager) throws Exception{
 		
-		List<BoardVO> ar = qnaService.boardList(curpage);
+		List<BoardVO> ar = qnaService.boardList(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("board/boardList");
 		
